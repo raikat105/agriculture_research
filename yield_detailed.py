@@ -4,8 +4,9 @@ from datetime import timedelta
 
 # === Step 1: Read datasets ===
 print("Loading datasets...")
-climate = pd.read_csv("C:\\Users\\RAIKAT\\OneDrive\\Documents\\Final Year Project\\merged\\BANKURA.csv")
-yield_data = pd.read_csv("C:\\Users\\RAIKAT\\OneDrive\\Documents\\Final Year Project\\bankura_wheat_yield_2001_2024.csv")
+climate = pd.read_csv("merged\\PURBA MEDINIPUR.csv")
+yield_data = pd.read_csv("purba_medinipur_rice_yield_2001_2024.csv")
+
 
 # Parse date
 climate['system:time_start'] = pd.to_datetime(climate['system:time_start'])
@@ -75,7 +76,7 @@ yield_data['year'] = yield_data['Year']
 merged = pd.merge(yield_data, climate_features_df, on='year', how='left')
 
 # === Step 4: Save Result ===
-output_file = "bankura_wheat_detailed.csv"
+output_file = "purba_medinipur_rice_detailed.csv"
 merged.to_csv(output_file, index=False)
 
 print(f"Detailed analysis saved as '{output_file}'")
